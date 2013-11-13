@@ -1,0 +1,46 @@
+﻿Build started 8/13/2013 2:43:41 AM.
+     1>Project "C:\Users\Xable\Google Drive\MMF2 Extensions\Xable Object\windows-edif-master\Extensions\Template\Template.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\..\Inc /I.\ /ZI /nologo /W3 /WX- /Od /Oy- /D COXSDK /D IN_EXT_VERSION2 /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D _WINDOWS /D EDITOR /D _VC80_UPGRADE=0x0600 /D _WINDLL /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug\\" /Fd".\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Lib\Edif.Edittime.cpp ..\..\Lib\Edif.General.cpp ..\..\Lib\Edif.Runtime.cpp ..\..\Lib\Edif.cpp ..\..\Lib\ObjectSelection.cpp Actions.cpp Conditions.cpp Edittime.cpp Expressions.cpp Extension.cpp General.cpp Runtime.cpp
+         Conditions.cpp
+         Generating Code...
+         Compiling...
+         Extension.cpp
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         Runtime.cpp
+         General.cpp
+         Expressions.cpp
+         Edittime.cpp
+         Actions.cpp
+         ObjectSelection.cpp
+         Edif.cpp
+         Edif.Runtime.cpp
+         Edif.General.cpp
+         Edif.Edittime.cpp
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.CppBuild.targets(1137,5): warning MSB8012: TargetPath(C:\Users\Xable\Google Drive\MMF2 Extensions\Xable Object\windows-edif-master\Extensions\Template\.\Debug\Xable Object.mfx) does not match the Linker's OutputFile property value (C:\Users\Xable\Google Drive\MMF2 Extensions\Xable Object\windows-edif-master\Extensions\Template\MFX\Extensions\Xable Object.mfx). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Xable\Google Drive\MMF2 Extensions\Xable Object\windows-edif-master\Extensions\Template\\MFX\Extensions\Xable Object.mfx" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib ..\..\lib\mmfs2.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:".\Ext.def" /MANIFEST:NO /DEBUG /PDB:".\Debug\Template.pdb" /TLBID:1 /DYNAMICBASE:NO /IMPLIB:".\Debug\Template.lib" /MACHINE:X86 /SAFESEH /DLL .\Debug\Ext.res
+         .\Debug\Actions.obj
+         .\Debug\Conditions.obj
+         .\Debug\Edittime.obj
+         .\Debug\Expressions.obj
+         .\Debug\Extension.obj
+         .\Debug\General.obj
+         .\Debug\Runtime.obj
+         .\Debug\ObjectSelection.obj
+         .\Debug\Edif.obj
+         .\Debug\Edif.Edittime.obj
+         .\Debug\Edif.General.obj
+         .\Debug\Edif.Runtime.obj
+         .\Debug\json.obj
+     1>Actions.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+            Creating library .\Debug\Template.lib and object .\Debug\Template.exp
+     1>Extension.obj : error LNK2019: unresolved external symbol "public: bool __thiscall Extension::TrueCondition(void)" (?TrueCondition@Extension@@QAE_NXZ) referenced in function "public: __thiscall Extension::Extension(struct RUNDATA *,struct EDITDATA *,struct tagCOB *)" (??0Extension@@QAE@PAURUNDATA@@PAUEDITDATA@@PAUtagCOB@@@Z)
+     1>Extension.obj : error LNK2019: unresolved external symbol "public: bool __thiscall Extension::FalseCondition(char *)" (?FalseCondition@Extension@@QAE_NPAD@Z) referenced in function "public: __thiscall Extension::Extension(struct RUNDATA *,struct EDITDATA *,struct tagCOB *)" (??0Extension@@QAE@PAURUNDATA@@PAUEDITDATA@@PAUtagCOB@@@Z)
+     1>C:\Users\Xable\Google Drive\MMF2 Extensions\Xable Object\windows-edif-master\Extensions\Template\\MFX\Extensions\Xable Object.mfx : fatal error LNK1120: 2 unresolved externals
+     1>Done Building Project "C:\Users\Xable\Google Drive\MMF2 Extensions\Xable Object\windows-edif-master\Extensions\Template\Template.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:03.35

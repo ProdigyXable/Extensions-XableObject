@@ -1,0 +1,125 @@
+{
+    "About": {
+        "Name": "Xable Object",
+        "Author": "Samuel Benton",
+        "Copyright": "Copyright (C) 2013 Xable Enterprises",
+        "Comment": "An extension with various functions/abilities.",
+        "URL": "http://www.xable.us/",
+        "Help": "http://www.xable.us/xable-object.html",
+        "Identifier": "PXMN"
+    },
+    "ActionMenu": 
+	[
+		"Separator",
+		
+		[0, "Custom Comment"],
+		
+		"Separator",
+	],
+
+    "ConditionMenu": 
+	[
+		["Comments",
+			[0, "Custom Comment (Always True)"],
+			[1, "Custom Comment (Always False)"],
+		],
+	],
+    "ExpressionMenu": [
+
+		"Separator",
+	
+		["Numerical Expressions",
+
+			[0,"X mod Y"],
+		
+			[1, "Convert x into base y"],
+
+			[2, "Find Nth Prime Number"],
+
+			[4, "Sign of Number"],
+
+		],
+
+		"Separator",
+
+		["Comments",
+			[3, "Expression Comment"],
+		],
+
+		"Separator",
+		
+    ],
+    "Actions": 
+	[
+		{"Title": "%0",
+			"Parameters":
+			[
+				["Text", "Custom Message"],
+			],
+		},
+				
+	],
+
+    "Conditions": 
+	[
+		{"Title": "%0 [True]",
+		     "Parameters":
+			[
+				["Text","Custom Message"],
+		    ],		
+			"Triggered": false
+		},
+		{"Title": "%0 [False]",
+		     "Parameters":
+			[
+				["Text","Custom Message"],
+		    ],		
+			"Triggered": false
+		},
+	],
+
+
+
+    "Expressions": [
+        {"Title": "Modx(",
+         "Returns": "Integer",
+         "Parameters": 
+			[
+                ["Integer","First number"],
+                ["Integer","Second number"],
+            ]
+        },
+		{"Title": "Base(",
+         "Returns": "Text",
+         "Parameters": 
+			[
+                ["Integer","First number"],
+                ["Integer","Second number"],
+            ]
+        },
+		{"Title": "Prime(",
+         "Returns": "Integer",
+         "Parameters": 
+			[
+                ["Integer","Initial Number"],
+                ["Integer","Nth following Prime Number"],
+            ]
+        },
+		{"Title": "Comment(",
+         "Returns": "Text",
+         "Parameters": 
+			[
+                ["Text","Comment message"],
+            ]
+        },
+		{"Title": "Sign(",
+         "Returns": "Integer",
+         "Parameters": 
+			[
+                ["Integer","Number"],
+            ]
+        },
+
+        
+    ]
+}
