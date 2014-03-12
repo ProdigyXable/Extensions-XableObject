@@ -1,6 +1,6 @@
 <b><i>Xable Object</i></b>
 
-Contains a wide variety of functions/algorithms for MMF2 & Fusion 2.5
+Contains a wide variety of functions/algorithms for MMF2 & Clickteam Fusion
 
 <hr/>
 <i>Notes</i>
