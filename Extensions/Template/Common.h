@@ -13,7 +13,7 @@ struct EDITDATA
 {
 	// Header - required
 	extHeader		eHeader;
-	
+	bool propertychecked;
 
 	// Object's data
 //	short			swidth;

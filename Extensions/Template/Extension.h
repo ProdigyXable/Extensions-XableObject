@@ -19,11 +19,10 @@ public:
     Extension(LPRDATA rdPtr, LPEDATA edPtr, fpcob cobPtr);
     ~Extension();
 
-	static LPRO ObjectPointer;
+	LPRDATA HandlerObject;
 
 
-
-    /*  Add any data you want to store in your extension to this class
+	/*  Add any data you want to store in your extension to this class
         (eg. what you'd normally store in rdPtr)
 
         Unlike rdPtr, you can store real C++ objects with constructors
@@ -44,16 +43,28 @@ public:
         numeric IDs in the class constructor (Extension.cpp)
     */
 
-    /// Actions
-
+    // Expressions
         unsigned int Modulus(int x, int y);
 		TCHAR * BaseConversionString(int number, int base);
 		long FindPrime(int number,  int nth_number);
 
 		byte Sign(int number);
+		int EventNum();
+		float ObjectAngle();
 
+	// Actions
 		void ActionComment(TCHAR * message);
+
+		void SetObject(LPRDATA ffobject);
+		void IncrementX(int deltaX);
+		void IncrementY(int deltaY);
+		void ChangeAngle(float deltaAngle);
+		void ObjectChanged();
+
 		void ExpressionComment(TCHAR * message);
+		void ClearObject();
+
+	// Conditions 
 
 		bool TrueCondition(TCHAR * message);
 		bool FalseCondition(TCHAR * message);

@@ -22,7 +22,7 @@ enum {
 // -------
 //	PROPID_TEXTTITLE,	
 //	PROPID_TEXT,	
-//	PROPID_CHECK,
+	Demo,
 //	PROPID_COMBO,
 //	PROPID_COLOR,
 
@@ -47,7 +47,7 @@ PropData Properties[] = {
 // -------
 //	PropData_Group		(PROPID_TEXTTITLE,	IDS_PROP_TEXTTITLE,		IDS_PROP_TEXTTITLE),
 //	PropData_EditString	(PROPID_TEXT,		IDS_PROP_TEXT,			IDS_PROP_TEXT_INFO),
-//	PropData_CheckBox	(PROPID_CHECK,		IDS_PROP_CHECK,			IDS_PROP_CHECK_INFO),
+	PropData_CheckBox	(Demo,		(int)"Hello",			(int)"World"),
 //	PropData_ComboBox	(PROPID_COMBO,		IDS_PROP_COMBO,			IDS_PROP_COMBO,	ComboList),
 //	PropData_Color		(PROPID_COLOR,		IDS_PROP_COLOR,			IDS_PROP_COLOR_INFO),
 
@@ -126,7 +126,7 @@ BOOL WINAPI EditObject (mv _far *mV, fpObjInfo oiPtr, fpLevObj loPtr, LPEDATA ed
 	// Check compatibility
 	if ( IS_COMPATIBLE(mV) )
 	{
-	
+
 	}
 #endif // !defined(RUN_ONLY)
 	return FALSE;
@@ -158,6 +158,7 @@ void WINAPI	DLLExport PutObject(mv _far *mV, fpLevObj loPtr, LPEDATA edPtr, usho
 {
 #ifndef RUN_ONLY
 #endif // !defined(RUN_ONLY)
+
 }
 
 // --------------------
@@ -432,12 +433,12 @@ BOOL WINAPI DLLExport GetPropCheck(LPMV mV, LPEDATA edPtr, UINT nPropID)
 #ifndef RUN_ONLY
 	// Example
 	// -------
-//	switch (nPropID) {
+switch (nPropID) {
 //
 //	// Return 0 (unchecked) or 1 (checked)
-//	case PROPID_CHECK:
-//		return edPtr->nCheck;
-//	}
+	case Demo:
+		return edPtr->propertychecked;
+}
 
 #endif // !defined(RUN_ONLY)
 	return 0;		// Unchecked
@@ -516,14 +517,14 @@ void WINAPI DLLExport SetPropCheck(LPMV mV, LPEDATA edPtr, UINT nPropID, BOOL nC
 #ifndef RUN_ONLY
 	// Example
 	// -------
-//	switch (nPropID)
-//	{
-//	case PROPID_CHECK:
-//		edPtr->nCheck = nCheck;
+	switch (nPropID)
+	{
+	case Demo:
+		edPtr->propertychecked = nCheck;
 //		mvInvalidateObject(mV, edPtr);
 //		mvRefreshProp(mV, edPtr, PROPID_COMBO, TRUE);
 //		break;
-//	}
+	}
 #endif // !defined(RUN_ONLY)
 }
 

@@ -18,12 +18,13 @@ unsigned int Extension::Modulus(int x, int y)
 		while(x < 0);
 	}
 
-	else if (x >= 0)
+	if (x >= 0)
 	{
 			return (x % abs(y));
 	}
 
-	return -1;
+	return 0;
+	
 
 }
 
@@ -126,4 +127,15 @@ byte Extension::Sign(int number)
 	{
 		return 0;
 	}
+	
+}
+
+int Extension::EventNum()
+{
+	return -1;
+}
+
+float Extension::ObjectAngle()
+{
+	return GetSpriteAngle(rdPtr,(npSpr)Extension::HandlerObject->rs,0);
 }

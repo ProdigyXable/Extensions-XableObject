@@ -10,9 +10,13 @@
     },
     "ActionMenu": 
 	[
-		"Separator",
-		
 		[0, "Custom Comment"],
+		["Objects",
+			[1, "Set internal object"],
+			[2, "Change X Position"],
+			[3, "Change Y Position"],
+			[4, "Change Angle"],
+		],
 		
 		"Separator",
 	],
@@ -24,26 +28,27 @@
 			[1, "Custom Comment (Always False)"],
 		],
 	],
-    "ExpressionMenu": [
-
-		"Separator",
-	
+    "ExpressionMenu": 
+	[
 		["Numerical Expressions",
 
 			[0,"X mod Y"],
-		
 			[1, "Convert x into base y"],
-
 			[2, "Find Nth Prime Number"],
-
 			[4, "Sign of Number"],
 
 		],
+
+		[5, "Demo Expression"],
 
 		"Separator",
 
 		["Comments",
 			[3, "Expression Comment"],
+		],
+
+		["Objects",
+			[6, "Object Angle"],
 		],
 
 		"Separator",
@@ -57,7 +62,30 @@
 				["Text", "Custom Message"],
 			],
 		},
-				
+		{"Title": "Set %0 to internal object",
+			"Parameters":
+			[
+				["Object", "Set internal object"],
+			],
+		},
+		{"Title": "Change current object by %0 pixels horizontally",
+			"Parameters":
+			[
+				["Integer", "delta X"],
+			],
+		},	
+		{"Title": "Change current object by %0 pixels vertically",
+			"Parameters":
+			[
+				["Integer", "delta Y"],
+			],
+		},	
+		{"Title": "Rotate current object by %0 degrees",
+			"Parameters":
+			[
+				["Float", "delta Theta"],
+			],
+		},
 	],
 
     "Conditions": 
@@ -119,7 +147,11 @@
                 ["Integer","Number"],
             ]
         },
-
-        
+		{"Title": "EventNum(",
+         "Returns": "Integer",
+        },
+        {"Title": "ObjectAngle(",
+         "Returns": "Float",
+        },
     ]
 }

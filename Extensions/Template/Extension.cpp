@@ -14,16 +14,21 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
         IDs in the JSON here
     */
 
+	Extension::HandlerObject = NULL;
+
 	LinkExpression(0, Modulus);
 	LinkExpression(1, BaseConversionString);
 	LinkExpression(2, FindPrime);
 	LinkExpression(3, ExpressionComment);
 	LinkExpression(4, Sign);
+	LinkExpression(5, EventNum);
+	LinkExpression(6, ObjectAngle);
 
 	LinkAction(0, ActionComment);
-	
-
-	// LinkAction(0, SetObject);
+	LinkAction(1, SetObject);
+	LinkAction(2, IncrementX);
+	LinkAction(3, IncrementY);
+	LinkAction(4, ChangeAngle);
 
 	LinkCondition(0, TrueCondition);
 	LinkCondition(1, FalseCondition);
@@ -33,7 +38,7 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
 
         It's the only place you'll get access to edPtr at runtime, so you should transfer
         anything from edPtr to the extension class here.
-    
+   
     */
 
 
