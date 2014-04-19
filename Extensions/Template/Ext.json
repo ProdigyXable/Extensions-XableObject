@@ -27,6 +27,13 @@
 			[0, "Custom Comment (Always True)"],
 			[1, "Custom Comment (Always False)"],
 		],
+
+			[2, "Check bit of Number"],
+
+		["Object Conditions",
+			[3, "Bad Object Detected"],
+			[4, "Is Object Bad?"],
+		],
 	],
     "ExpressionMenu": 
 	[
@@ -39,7 +46,11 @@
 
 		],
 
-		[5, "Demo Expression"],
+		["Boolean Flags",
+			[6, "Turn Flag On"],
+			[7, "Turn Flag Off"],
+			[8, "Toggle Flag"],
+		],
 
 		"Separator",
 
@@ -48,7 +59,9 @@
 		],
 
 		["Objects",
-			[6, "Object Angle"],
+			[5, "Object Angle"],
+			[9, "Object X Position"],
+			[10, "Object Y Position"],
 		],
 
 		"Separator",
@@ -71,19 +84,19 @@
 		{"Title": "Change current object by %0 pixels horizontally",
 			"Parameters":
 			[
-				["Integer", "delta X"],
+				["Integer", "Change in X-Position"],
 			],
 		},	
 		{"Title": "Change current object by %0 pixels vertically",
 			"Parameters":
 			[
-				["Integer", "delta Y"],
+				["Integer", "Change in Y-Position"],
 			],
 		},	
 		{"Title": "Rotate current object by %0 degrees",
 			"Parameters":
 			[
-				["Float", "delta Theta"],
+				["Float", "Change in angle"],
 			],
 		},
 	],
@@ -102,6 +115,20 @@
 			[
 				["Text","Custom Message"],
 		    ],		
+			"Triggered": false
+		},
+		{"Title": "%o Check bit %1 of %0",
+			"Parameters":
+			[
+				["Integer", "Number"],
+				["Integer", "Bit Index"],
+			],
+			"Triggered": false
+		},
+		{"Title": "%o Bad Object has been detected",
+			"Triggered": true
+		},
+		{"Title": "%o Is current object a bad object?",
 			"Triggered": false
 		},
 	],
@@ -147,11 +174,38 @@
                 ["Integer","Number"],
             ]
         },
-		{"Title": "EventNum(",
-         "Returns": "Integer",
-        },
         {"Title": "ObjectAngle(",
          "Returns": "Float",
+        },
+		{"Title": "FlagOn(",
+         "Returns": "Integer",
+         "Parameters": 
+			[
+                ["Integer","Flag/Int"],
+				["Integer","Flag Index"],
+            ]
+        },
+		{"Title": "FlagOff(",
+         "Returns": "Integer",
+         "Parameters": 
+			[
+                ["Integer","Flag/Int"],
+				["Integer","Flag Index"],
+            ]
+        },
+		{"Title": "FlagSwap(",
+         "Returns": "Integer",
+         "Parameters": 
+			[
+                ["Integer","Flag/Int"],
+				["Integer","Flag Index"],
+            ]
+        },
+		{"Title": "ObjectX(",
+         "Returns": "Integer",
+        },
+		{"Title": "ObjectY(",
+         "Returns": "Integer",
         },
     ]
 }

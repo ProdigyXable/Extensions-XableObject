@@ -14,15 +14,20 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
         IDs in the JSON here
     */
 
-	Extension::HandlerObject = NULL;
+	StoredObject = NULL;
 
 	LinkExpression(0, Modulus);
 	LinkExpression(1, BaseConversionString);
 	LinkExpression(2, FindPrime);
 	LinkExpression(3, ExpressionComment);
 	LinkExpression(4, Sign);
-	LinkExpression(5, EventNum);
-	LinkExpression(6, ObjectAngle);
+	LinkExpression(5, ObjectAngle);
+	LinkExpression(6, IntBitFlagOn);
+	LinkExpression(7, IntBitFlagOff);
+	LinkExpression(8, IntBitFlagToggle);
+	LinkExpression(9, ObjectX);
+	LinkExpression(10, ObjectY);
+
 
 	LinkAction(0, ActionComment);
 	LinkAction(1, SetObject);
@@ -32,6 +37,9 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
 
 	LinkCondition(0, TrueCondition);
 	LinkCondition(1, FalseCondition);
+	LinkCondition(2, FlagStatus);
+	LinkCondition(3, BadObject);
+	LinkCondition(4, BadObjectTest);
 
     /*
         This is where you'd do anything you'd do in CreateRunObject in the original SDK
@@ -89,10 +97,6 @@ short Extension::Handle()
 
     */
 
-	// Will not be called next loop	
-
-		
-
 	return REFLAG_ONESHOT;
 }
 
@@ -103,21 +107,16 @@ short Extension::Display()
        If you return REFLAG_DISPLAY in Handle() this routine will run.
     */
 
-    // Ok
     return 0;
 }
 
 short Extension::Pause()
 {
-
-    // Ok
     return 0;
 }
 
 short Extension::Continue()
 {
-
-    // Ok
     return 0;
 }
 
@@ -161,13 +160,11 @@ void Extension::Action(int ID, LPRDATA rdPtr, long param1, long param2)
 
 long Extension::Condition(int ID, LPRDATA rdPtr, long param1, long param2)
 {
-
     return false;
 }
 
 long Extension::Expression(int ID, LPRDATA rdPtr, long param)
 {
-
     return 0;
 }
 

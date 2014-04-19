@@ -1,10 +1,11 @@
 
 #include "Common.h"
 
+// Properly returns the circular modulus of negatives numbers
 unsigned int Extension::Modulus(int x, int y)
 {
 
-	if (y == 0)
+	if (y <= 1)
 	{
 		return 0;
 	}
@@ -20,7 +21,7 @@ unsigned int Extension::Modulus(int x, int y)
 
 	if (x >= 0)
 	{
-			return (x % abs(y));
+		return (x % abs(y));
 	}
 
 	return 0;
@@ -28,6 +29,7 @@ unsigned int Extension::Modulus(int x, int y)
 
 }
 
+// Converts a base 10 number to a specified based, works best with 2 - 16 base
 TCHAR * Extension::BaseConversionString(int number, int base)
 {
 	if(base < 2)
@@ -66,6 +68,7 @@ TCHAR * Extension::BaseConversionString(int number, int base)
 	return New;
 }
 
+// Allows you to find the nth prime number after a initial number
 long Extension::FindPrime(int number,  int nth_number)
 {
 	long count = 0;
@@ -76,10 +79,23 @@ long Extension::FindPrime(int number,  int nth_number)
 		nth_number = 1;
 	}
 
-	while(count < nth_number)
+	if(number == -1 || number == 0 || number == 1)
+	{
+		if(nth_number > 0)
+		{
+			number++;
+		}
+
+		if(nth_number < 0)
+		{
+			number--;
+		}
+	}
+		
+	while(count < nth_number && nth_number != 0)
 	{
 		swap = false;
-		
+
 		for(int holdingValue = 2; holdingValue < abs(number)-1; ++holdingValue)
 		{
 			
@@ -100,18 +116,42 @@ long Extension::FindPrime(int number,  int nth_number)
 			++count;
 		}
 
-		++number;
+		if(nth_number > 0)
+		{
+			++number;
+		}
+
+		if(nth_number < 0)
+		{
+			--number;
+		}
 
 	}
 
-	return (number-1);
+	if(nth_number > 0)
+	{
+		return (number - 1);
+	}
+
+	else if(nth_number < 0)
+	{
+		return (number + 1);
+	}
+
+	else
+	{
+		return 0;
+	}
+	
 }
 
+// Allows you to put a custom comment into the Event Editor/EventListEditor
 void Extension::ExpressionComment(TCHAR * message)
 {
 }
 
-byte Extension::Sign(int number)
+// Returns the sign of a number and 0 if 0. Crashes if input is "-1.#IND"
+byte Extension::Sign(double number)
 {
 	if(number < 0)
 	{
@@ -123,19 +163,91 @@ byte Extension::Sign(int number)
 		return 1;
 	}
 
-	else
+	else if( number = 0)
 	{
 		return 0;
+	}
+
+	else
+	{
+		return -2;
 	}
 	
 }
 
+// Not used at all
 int Extension::EventNum()
 {
 	return -1;
 }
 
+// Returns the current angle of an object
 float Extension::ObjectAngle()
 {
-	return GetSpriteAngle(rdPtr,(npSpr)Extension::HandlerObject->rs,0);
+	if((((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject != NULL)
+	{
+		float leftovers = ((LPRO)StoredObject)->roc.rcAngle - (int)(((LPRO)StoredObject)->roc.rcAngle);
+		return leftovers + Extension::Modulus(((LPRO)StoredObject)->roc.rcAngle, 360);
+	}
+
+	else
+	{
+		Runtime.GenerateEvent(InvalidObject);
+		return -1;
+	}
+}
+
+// Turns on the nth bit of a number. Bit index must be from 0 - 31.
+int Extension::IntBitFlagOn(int number, int bit_index)
+{
+	bit_index = max(pow(2,min(31,bit_index)),0);
+
+	return (number | bit_index);
+}
+
+// Turns off the nth bit of a number. Bit index must be from  0 - 31.
+int Extension::IntBitFlagOff(int number, int bit_index)
+{
+	bit_index = max(pow(2,min(31,bit_index)),0);
+	
+	return (number & (~bit_index));
+
+}
+
+// Toggles the nth bit of a number. Bit index must be from 0 - 31
+int Extension::IntBitFlagToggle(int number, int bit_index)
+{
+	bit_index = max(pow(2,min(31,bit_index)),0);
+
+	return (number ^ bit_index);
+}
+
+// Returns the X position of the stored object
+int Extension::ObjectX()
+{
+	if((((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject != NULL)
+	{
+		return StoredObject->rHo.hoX;
+	}
+
+	else
+	{
+		Runtime.GenerateEvent(InvalidObject);
+		return -1;
+	}
+}
+
+// Returns the Y position of the stored object
+int Extension::ObjectY()
+{
+	if((((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject != NULL)
+	{
+		return StoredObject->rHo.hoY;
+	}
+
+	else
+	{
+		Runtime.GenerateEvent(InvalidObject);
+		return -1;
+	}
 }

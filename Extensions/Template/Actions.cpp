@@ -10,52 +10,57 @@ void Extension::ActionComment(TCHAR * message)
 void Extension::SetObject(LPRDATA object)
 {
 	
-		Extension::HandlerObject = object;
+		StoredObject = object;
 }
 
 void Extension::IncrementX(int deltaX)
 {
-	if(Runtime.FixedFromLPRO((LPRO)Extension::HandlerObject))
+	if((((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject != NULL)
 	{
-		callRunTimeFunction(Extension::HandlerObject, RFUNCTION_SETPOSITION, Extension::HandlerObject->rHo.hoX + deltaX, Extension::HandlerObject->rHo.hoY);
 		ObjectChanged();
+		StoredObject->rHo.hoX += deltaX;
 	}
 	else
 	{
+		Runtime.GenerateEvent(InvalidObject);
 		ClearObject();
 	}
 }
+
 void Extension::IncrementY(int deltaY)
 {
-	if(Runtime.FixedFromLPRO((LPRO)Extension::HandlerObject))
+	if((((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject != NULL)
 	{
-		callRunTimeFunction(Extension::HandlerObject, RFUNCTION_SETPOSITION, Extension::HandlerObject->rHo.hoX,	Extension::HandlerObject->rHo.hoY + deltaY);
 		ObjectChanged();
+		StoredObject->rHo.hoY += deltaY;
 	}
 	else
 	{
+		Runtime.GenerateEvent(InvalidObject);
 		ClearObject();
 	}
 }
 
 void Extension::ClearObject()
 {
-	Extension::HandlerObject = NULL;
+	// StoredObject = NULL;
 }
 
 void Extension::ObjectChanged()
 {
-//	Extension::HandlerObject->rc->rcChanged = true;
+	((LPRO)StoredObject)->roc.rcChanged = true;
 }
 
 void Extension::ChangeAngle(float deltaAngle)
 {
-	if(Runtime.FixedFromLPRO((LPRO)Extension::HandlerObject))
+	if( (((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject)
 	{
-	LPRO Object = (LPRO)Extension::HandlerObject;
-	float ObjectAngle = Object->roc.rcOldAngle;
-
-	SetSpriteAngle(rhPtr->rhIdAppli,(npSpr)Extension::HandlerObject->rs, 120, 1);
-
+		ObjectChanged();
+		((LPRO)StoredObject)->roc.rcAngle += (ANGLETYPE)deltaAngle;
+	}
+	else
+	{
+		Runtime.GenerateEvent(InvalidObject);
+		ClearObject();
 	}
 }

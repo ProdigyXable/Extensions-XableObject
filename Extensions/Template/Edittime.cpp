@@ -17,14 +17,9 @@
 // Property identifiers
 enum {
 	PROPID_SETTINGS = PROPID_EXTITEM_CUSTOM_FIRST,
-
-// Example
-// -------
-//	PROPID_TEXTTITLE,	
-//	PROPID_TEXT,	
-	Demo,
-//	PROPID_COMBO,
-//	PROPID_COLOR,
+	Version_Group,
+	Update_Date,
+	Contact_Info,
 
 };
 
@@ -47,7 +42,9 @@ PropData Properties[] = {
 // -------
 //	PropData_Group		(PROPID_TEXTTITLE,	IDS_PROP_TEXTTITLE,		IDS_PROP_TEXTTITLE),
 //	PropData_EditString	(PROPID_TEXT,		IDS_PROP_TEXT,			IDS_PROP_TEXT_INFO),
-	PropData_CheckBox	(Demo,		(int)"Hello",			(int)"World"),
+	PropData_Group(Version_Group,		(UINT)"Version Numbeer",	(UINT)""),
+	PropData_StaticString(Update_Date,	(UINT)"Extension Version",	(UINT)"The last time the extension was updated. Also the version of the extension"),
+	PropData_StaticString(Contact_Info,	(UINT)"Contact Information",	(UINT)"Contact information incase a problem/error occurs"),
 //	PropData_ComboBox	(PROPID_COMBO,		IDS_PROP_COMBO,			IDS_PROP_COMBO,	ComboList),
 //	PropData_Color		(PROPID_COLOR,		IDS_PROP_COLOR,			IDS_PROP_COLOR_INFO),
 
@@ -404,20 +401,22 @@ LPVOID WINAPI DLLExport GetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID)
 #ifndef RUN_ONLY
 	// Example
 	// -------
-//	switch (nPropID) {
+	switch (nPropID) {
 //
 //	// Returns a color.
 //	case PROPID_COLOR:
 //		return new CPropDWordValue(edPtr->dwColor);
 //
 //	// Returns a string
-//	case PROPID_TEXT:
-//		return new CPropDataValue(&edPtr->szText[0]);
+	case Update_Date:
+		return new CPropDataValue("April 19th, 2014");
+	case Contact_Info:
+		return new CPropDataValue("ProdigyXable@gmail.com");
 //
 //	// Returns the value of the combo box
 //	case PROPID_COMBO:
 //		return new CPropDWordValue(edPtr->nComboIndex);
-//	}
+	}
 
 #endif // !defined(RUN_ONLY)
 	return NULL;
@@ -433,12 +432,10 @@ BOOL WINAPI DLLExport GetPropCheck(LPMV mV, LPEDATA edPtr, UINT nPropID)
 #ifndef RUN_ONLY
 	// Example
 	// -------
-switch (nPropID) {
-//
-//	// Return 0 (unchecked) or 1 (checked)
-	case Demo:
-		return edPtr->propertychecked;
-}
+	// switch (nPropID) {
+	//
+	// Return 0 (unchecked) or 1 (checked)
+	// }
 
 #endif // !defined(RUN_ONLY)
 	return 0;		// Unchecked
@@ -517,14 +514,12 @@ void WINAPI DLLExport SetPropCheck(LPMV mV, LPEDATA edPtr, UINT nPropID, BOOL nC
 #ifndef RUN_ONLY
 	// Example
 	// -------
-	switch (nPropID)
-	{
-	case Demo:
-		edPtr->propertychecked = nCheck;
+//	switch (nPropID)
+//	{
 //		mvInvalidateObject(mV, edPtr);
 //		mvRefreshProp(mV, edPtr, PROPID_COMBO, TRUE);
 //		break;
-	}
+//	}
 #endif // !defined(RUN_ONLY)
 }
 
@@ -569,7 +564,7 @@ BOOL WINAPI IsPropEnabled(LPMV mV, LPEDATA edPtr, UINT nPropID)
 	}
 */
 #endif // !defined(RUN_ONLY)
-	return TRUE;
+	return true;
 }
 
 

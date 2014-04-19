@@ -48,9 +48,15 @@ public:
 		TCHAR * BaseConversionString(int number, int base);
 		long FindPrime(int number,  int nth_number);
 
-		byte Sign(int number);
+		byte Sign(double number);
 		int EventNum();
 		float ObjectAngle();
+		int ObjectX();
+		int ObjectY();
+
+		int IntBitFlagOn(int number, int bit_index);
+		int IntBitFlagOff(int number, int bit_index);
+		int IntBitFlagToggle(int number, int bit_index);
 
 	// Actions
 		void ActionComment(TCHAR * message);
@@ -68,6 +74,9 @@ public:
 
 		bool TrueCondition(TCHAR * message);
 		bool FalseCondition(TCHAR * message);
+		bool FlagStatus(int number, int flag_index);
+		bool BadObject();
+		bool BadObjectTest();
 
 	// void SetObject(LPRO object);
 

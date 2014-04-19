@@ -9,6 +9,12 @@
 
 // edPtr : Used at edittime and saved in the MFA/CCN/EXE files
 
+// -- Custom Shortcut Definitions --
+#define StoredObject Extension::HandlerObject
+
+// Shortcut to create the immediate condition 
+#define InvalidObject 3
+
 struct EDITDATA
 {
 	// Header - required
