@@ -10,7 +10,8 @@ unsigned int Extension::Modulus(int x, int y)
 		return 0;
 	}
 
-	if (x < 0)
+	// Ensures X is positive before the modulus operation
+	else if (x < 0)
 	{
 		do
 		{
@@ -21,7 +22,7 @@ unsigned int Extension::Modulus(int x, int y)
 
 	if (x >= 0)
 	{
-		return (x % abs(y));
+		return (x % y);
 	}
 
 	return 0;
@@ -51,12 +52,12 @@ TCHAR * Extension::BaseConversionString(int number, int base)
 	{
 		if((number / max) % base < 10)
 		{
-			New[index] = (char)(((number / max) % base)+ 48);
+			New[index] = (TCHAR)(((number / max) % base)+ 48);
 		}
 
 		else if(((number / max) % base >= 10) && ((number / max) % base < 36))
 		{
-			New [index] = (char)(65 + (((number / max) % base)-10));
+			New[index] = (TCHAR)(65 + (((number / max) % base)-10));
 		}
 
 		index++;
@@ -72,77 +73,27 @@ TCHAR * Extension::BaseConversionString(int number, int base)
 long Extension::FindPrime(int number,  int nth_number)
 {
 	long count = 0;
-	bool swap = false;
+	bool detect = false;
 
+	// Error Checking
 	if(nth_number <= 0)
 	{
-		nth_number = 1;
+		nth_number = -1;
 	}
 
-	if(number == -1 || number == 0 || number == 1)
+	number = max(2,number);
+
+	while(count < nth_number)
 	{
-		if(nth_number > 0)
+		if(Extension::PrimeTest(number))
 		{
-			number++;
+			count++;
 		}
 
-		if(nth_number < 0)
-		{
-			number--;
-		}
-	}
-		
-	while(count < nth_number && nth_number != 0)
-	{
-		swap = false;
-
-		for(int holdingValue = 2; holdingValue < abs(number)-1; ++holdingValue)
-		{
-			
-			if(abs(number) % holdingValue == 0 )
-			{
-				swap = true;
-				break;
-			}
-			
-			if(swap)
-			{
-				break;
-			}
-		}
-
-		if(swap == false && (number != 0  && abs(number )!= 1))
-		{
-			++count;
-		}
-
-		if(nth_number > 0)
-		{
-			++number;
-		}
-
-		if(nth_number < 0)
-		{
-			--number;
-		}
-
+		number++;
 	}
 
-	if(nth_number > 0)
-	{
-		return (number - 1);
-	}
-
-	else if(nth_number < 0)
-	{
-		return (number + 1);
-	}
-
-	else
-	{
-		return 0;
-	}
-	
+	return (number - 1);
 }
 
 // Allows you to put a custom comment into the Event Editor/EventListEditor
@@ -250,4 +201,13 @@ int Extension::ObjectY()
 		Runtime.GenerateEvent(InvalidObject);
 		return -1;
 	}
+}
+
+int Extension::Factorial(int number)
+{
+	if(number <= 1)
+	{
+		return 1;
+	}
+	return number * Factorial(number - 1);
 }

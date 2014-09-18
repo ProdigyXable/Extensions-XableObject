@@ -27,6 +27,7 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
 	LinkExpression(8, IntBitFlagToggle);
 	LinkExpression(9, ObjectX);
 	LinkExpression(10, ObjectY);
+	LinkExpression(11, Factorial);
 
 
 	LinkAction(0, ActionComment);
@@ -40,6 +41,7 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
 	LinkCondition(2, FlagStatus);
 	LinkCondition(3, BadObject);
 	LinkCondition(4, BadObjectTest);
+	LinkCondition(5, PrimeTest);
 
     /*
         This is where you'd do anything you'd do in CreateRunObject in the original SDK

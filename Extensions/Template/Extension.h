@@ -57,6 +57,7 @@ public:
 		int IntBitFlagOn(int number, int bit_index);
 		int IntBitFlagOff(int number, int bit_index);
 		int IntBitFlagToggle(int number, int bit_index);
+		int Factorial(int number);
 
 	// Actions
 		void ActionComment(TCHAR * message);
@@ -71,12 +72,12 @@ public:
 		void ClearObject();
 
 	// Conditions 
-
 		bool TrueCondition(TCHAR * message);
 		bool FalseCondition(TCHAR * message);
 		bool FlagStatus(int number, int flag_index);
 		bool BadObject();
 		bool BadObjectTest();
+		bool PrimeTest(int number);
 
 	// void SetObject(LPRO object);
 

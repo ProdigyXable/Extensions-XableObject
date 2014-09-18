@@ -2,9 +2,9 @@
     "About": {
         "Name": "Xable Object",
         "Author": "Samuel Benton",
-        "Copyright": "Copyright (C) 2013 Xable Enterprises",
+        "Copyright": "Copyright (C) 2014 Xable Enterprises",
         "Comment": "An extension with various functions/abilities.",
-        "URL": "http://www.xable.us/",
+        "URL": "http://www.xable.us/xable-object.html",
         "Help": "http://www.xable.us/xable-object.html",
         "Identifier": "PXMN"
     },
@@ -29,6 +29,7 @@
 		],
 
 			[2, "Check bit of Number"],
+			[5, "Prime Test"],
 
 		["Object Conditions",
 			[3, "Bad Object Detected"],
@@ -43,6 +44,7 @@
 			[1, "Convert x into base y"],
 			[2, "Find Nth Prime Number"],
 			[4, "Sign of Number"],
+			[11, "Factorial"],
 
 		],
 
@@ -131,6 +133,13 @@
 		{"Title": "%o Is current object a bad object?",
 			"Triggered": false
 		},
+		{"Title": "%o Is %0 a prime number?",
+			"Parameters":
+			[
+				["Integer", "Number"],
+			],
+			"Triggered": false
+		},
 	],
 
 
@@ -206,6 +215,13 @@
         },
 		{"Title": "ObjectY(",
          "Returns": "Integer",
+        },
+		{"Title": "Factorial(",
+         "Returns": "Integer",
+		 "Parameters":
+		 [
+			["Integer","Number"],
+		 ]
         },
     ]
 }

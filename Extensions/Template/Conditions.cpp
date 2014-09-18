@@ -35,3 +35,33 @@ bool Extension::BadObjectTest()
 		return true;
 	}
 }
+
+bool Extension::PrimeTest(int number)
+{
+	if(number <= 0)
+	{
+		return false;
+	}
+
+	// Base Case
+	if(number == 2)
+	{
+		return true;
+	}
+
+	bool detected = false;
+
+	// Removes half the possible checked numbers from the loop
+	int max = sqrt(number) + 1;
+
+	for(int index = 2; index <= max && !detected; index++)
+	{
+		
+		if((number % index == 0 ))
+		{
+			detected = true;
+		}
+	}
+		
+	return !detected;
+}

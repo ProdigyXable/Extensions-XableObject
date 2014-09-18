@@ -9,7 +9,6 @@ void Extension::ActionComment(TCHAR * message)
 
 void Extension::SetObject(LPRDATA object)
 {
-	
 		StoredObject = object;
 }
 
