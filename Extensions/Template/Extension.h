@@ -58,6 +58,7 @@ public:
 		int IntBitFlagOff(int number, int bit_index);
 		int IntBitFlagToggle(int number, int bit_index);
 		int Factorial(int number);
+		int FiboNumber(int number);
 
 	// Actions
 		void ActionComment(TCHAR * message);

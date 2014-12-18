@@ -28,7 +28,7 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
 	LinkExpression(9, ObjectX);
 	LinkExpression(10, ObjectY);
 	LinkExpression(11, Factorial);
-
+	LinkExpression(12, FiboNumber);
 
 	LinkAction(0, ActionComment);
 	LinkAction(1, SetObject);

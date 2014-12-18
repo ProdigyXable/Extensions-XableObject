@@ -40,11 +40,15 @@ void Extension::IncrementY(int deltaY)
 	}
 }
 
+// Currently does nothing
+// Setting "StoredObject" to null here crashes the entire extension
 void Extension::ClearObject()
 {
-	// StoredObject = NULL;
+	StoredObject = NULL;
 }
 
+
+// Allows position, angle, other properties of objects to be updated
 void Extension::ObjectChanged()
 {
 	((LPRO)StoredObject)->roc.rcChanged = true;
@@ -57,6 +61,7 @@ void Extension::ChangeAngle(float deltaAngle)
 		ObjectChanged();
 		((LPRO)StoredObject)->roc.rcAngle += (ANGLETYPE)deltaAngle;
 	}
+
 	else
 	{
 		Runtime.GenerateEvent(InvalidObject);

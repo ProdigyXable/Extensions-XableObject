@@ -16,11 +16,11 @@
 
 // Property identifiers
 enum {
+
 	PROPID_SETTINGS = PROPID_EXTITEM_CUSTOM_FIRST,
 	Version_Group,
 	Update_Date,
 	Contact_Info,
-
 };
 
 // Example of content of the PROPID_COMBO combo box
@@ -409,7 +409,7 @@ LPVOID WINAPI DLLExport GetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID)
 //
 //	// Returns a string
 	case Update_Date:
-		return new CPropDataValue("September 18th, 2014");
+		return new CPropDataValue("December 17th, 2014");
 	case Contact_Info:
 		return new CPropDataValue("ProdigyXable@gmail.com");
 //

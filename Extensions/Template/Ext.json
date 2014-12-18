@@ -2,7 +2,7 @@
     "About": {
         "Name": "Xable Object",
         "Author": "Samuel Benton",
-        "Copyright": "Copyright (C) 2014 Xable Enterprises",
+        "Copyright": "Copyright © 2014 Xable Enterprises",
         "Comment": "An extension with various functions/abilities.",
         "URL": "http://www.xable.us/xable-object.html",
         "Help": "http://www.xable.us/xable-object.html",
@@ -10,12 +10,17 @@
     },
     "ActionMenu": 
 	[
-		[0, "Custom Comment"],
+		[0, "Custom Action Comment"],
+		
 		["Objects",
 			[1, "Set internal object"],
 			[2, "Change X Position"],
 			[3, "Change Y Position"],
 			[4, "Change Angle"],
+
+			"Separator",
+
+			[5, "Remove Current Object"],
 		],
 		
 		"Separator",
@@ -24,34 +29,36 @@
     "ConditionMenu": 
 	[
 		["Comments",
-			[0, "Custom Comment (Always True)"],
-			[1, "Custom Comment (Always False)"],
+			[0, "Custom Conditional Comment (Always True)"],
+			[1, "Custom Conditional Comment (Always False)"],
 		],
 
-			[2, "Check bit of Number"],
-			[5, "Prime Test"],
+		["Numerical Conditions",
+			[2, "Check bit of number"],
+			[5, "Check if number is prime"],
+		],
 
 		["Object Conditions",
 			[3, "Bad Object Detected"],
 			[4, "Is Object Bad?"],
 		],
 	],
+
     "ExpressionMenu": 
 	[
 		["Numerical Expressions",
-
-			[0,"X mod Y"],
+			[0, "X mod Y"],
 			[1, "Convert x into base y"],
-			[2, "Find Nth Prime Number"],
-			[4, "Sign of Number"],
-			[11, "Factorial"],
-
+			[2, "Find Nth prime number"],
+			[4, "Find sign of number"],
+			[11, "Calculate Factorial"],
+			[12, "Calculate Fibonacci Number"],
 		],
 
 		["Boolean Flags",
-			[6, "Turn Flag On"],
-			[7, "Turn Flag Off"],
-			[8, "Toggle Flag"],
+			[6, "Turn bit within number On"],
+			[7, "Turn bit within number Off"],
+			[8, "Toggle bit within number"],
 		],
 
 		"Separator",
@@ -100,6 +107,8 @@
 			[
 				["Float", "Change in angle"],
 			],
+		},
+		{"Title": "Forget current object",
 		},
 	],
 
@@ -220,7 +229,14 @@
          "Returns": "Integer",
 		 "Parameters":
 		 [
-			["Integer","Number"],
+			["Integer","Positive Integer"],
+		 ]
+        },
+		{"Title": "FiboNumber(",
+         "Returns": "Integer",
+		 "Parameters":
+		 [
+			["Integer","Fibonacci Index"],
 		 ]
         },
     ]

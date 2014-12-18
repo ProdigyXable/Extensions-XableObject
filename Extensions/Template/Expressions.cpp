@@ -211,3 +211,35 @@ int Extension::Factorial(int number)
 	}
 	return number * Factorial(number - 1);
 }
+
+int Extension::FiboNumber(int number)
+{
+	if(number > 1)
+	{
+		int * saved = new int[number + 1];
+		saved[0] = 0;
+		saved[1] = 1;
+
+		for(int i = 2; i <= number; i++)
+		{
+			saved[i] = saved[i-2]+saved[i-1];
+		}
+
+		return saved[number];
+
+	}
+	else if(number == 0 )
+	{
+		return 0;
+	}
+
+	else if (number == 1)
+	{
+		return 1;
+	}
+
+	else
+	{
+		return -1;
+	}
+}
