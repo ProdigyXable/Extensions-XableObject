@@ -1,4 +1,3 @@
-
 class Extension
 {
 public:
