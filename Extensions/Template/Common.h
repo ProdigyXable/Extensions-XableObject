@@ -14,6 +14,7 @@
 
 // Shortcut to create the immediate condition 
 #define InvalidObject 3
+#define FusionAngleMultiplier 1.4013e-45
 
 struct EDITDATA
 {

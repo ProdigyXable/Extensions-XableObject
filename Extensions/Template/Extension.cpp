@@ -14,7 +14,7 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
         IDs in the JSON here
     */
 
-	StoredObject = NULL;
+	ClearObject();
 
 	LinkExpression(0, Modulus);
 	LinkExpression(1, BaseConversionString);
@@ -29,12 +29,15 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
 	LinkExpression(10, ObjectY);
 	LinkExpression(11, Factorial);
 	LinkExpression(12, FiboNumber);
+	LinkExpression(13, ObjectFixedValue);
 
 	LinkAction(0, ActionComment);
 	LinkAction(1, SetObject);
 	LinkAction(2, IncrementX);
 	LinkAction(3, IncrementY);
 	LinkAction(4, ChangeAngle);
+	LinkAction(5, ClearObject);
+	LinkAction(6, SetObjectFixedValue);
 
 	LinkCondition(0, TrueCondition);
 	LinkCondition(1, FalseCondition);
@@ -69,6 +72,11 @@ Extension::~Extension()
 
 short Extension::Handle()
 {
+	if( !IsObjectStillValid() )
+	{
+		ClearObject();
+	}
+
     /*
        If your extension will draw to the MMF window you should first 
        check if anything about its display has changed :
@@ -99,7 +107,7 @@ short Extension::Handle()
 
     */
 
-	return REFLAG_ONESHOT;
+	return 0;
 }
 
 

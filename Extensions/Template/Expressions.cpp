@@ -1,6 +1,8 @@
 
 #include "Common.h"
 
+
+
 // Properly returns the circular modulus of negatives numbers
 unsigned int Extension::Modulus(int x, int y)
 {
@@ -30,7 +32,7 @@ unsigned int Extension::Modulus(int x, int y)
 
 }
 
-// Converts a base 10 number to a specified based, works best with 2 - 16 base
+// Converts a base 10 number to a specified based, works best with 2 - 16 base, extendable to base 36
 TCHAR * Extension::BaseConversionString(int number, int base)
 {
 	if(base < 2)
@@ -69,7 +71,7 @@ TCHAR * Extension::BaseConversionString(int number, int base)
 	return New;
 }
 
-// Allows you to find the nth prime number after a initial number
+// Allows you to find the nth prime number after an initial number
 long Extension::FindPrime(int number,  int nth_number)
 {
 	long count = 0;
@@ -96,7 +98,7 @@ long Extension::FindPrime(int number,  int nth_number)
 	return (number - 1);
 }
 
-// Allows you to put a custom comment into the Event Editor/EventListEditor
+// Allows you to put a custom comment into the Event Editor/Event List Editor
 void Extension::ExpressionComment(TCHAR * message)
 {
 }
@@ -114,7 +116,7 @@ byte Extension::Sign(double number)
 		return 1;
 	}
 
-	else if( number = 0)
+	else if(number == 0)
 	{
 		return 0;
 	}
@@ -126,19 +128,25 @@ byte Extension::Sign(double number)
 	
 }
 
-// Not used at all
-int Extension::EventNum()
+// Returns the current angle of an object modulus'ed 360 with any floating remainders
+int Extension::ObjectAngle()
 {
-	return -1;
-}
-
-// Returns the current angle of an object
-float Extension::ObjectAngle()
-{
-	if((((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject != NULL)
+	
+	if(IsObjectStillValid())
 	{
-		float leftovers = ((LPRO)StoredObject)->roc.rcAngle - (int)(((LPRO)StoredObject)->roc.rcAngle);
-		return leftovers + Extension::Modulus(((LPRO)StoredObject)->roc.rcAngle, 360);
+		
+		if(IsProductMMF2())
+		{
+			ANGLETYPE leftovers = ((LPRO)StoredObject)->roc.rcAngle - (int)((LPRO)StoredObject)->roc.rcAngle;
+			return leftovers + Modulus(((LPRO)StoredObject)->roc.rcAngle, 360);
+		}
+
+		// Due to diffculties in the rcAngle, this expression does not work in Clickteam Fusion.
+		// So an error code is returned
+		else
+		{
+			return -2;
+		}
 	}
 
 	else
@@ -176,7 +184,7 @@ int Extension::IntBitFlagToggle(int number, int bit_index)
 // Returns the X position of the stored object
 int Extension::ObjectX()
 {
-	if((((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject != NULL)
+	if(IsObjectStillValid())
 	{
 		return StoredObject->rHo.hoX;
 	}
@@ -191,7 +199,7 @@ int Extension::ObjectX()
 // Returns the Y position of the stored object
 int Extension::ObjectY()
 {
-	if((((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject != NULL)
+	if(IsObjectStillValid())
 	{
 		return StoredObject->rHo.hoY;
 	}
@@ -242,4 +250,9 @@ int Extension::FiboNumber(int number)
 	{
 		return -1;
 	}
+}
+
+int Extension::ObjectFixedValue()
+{
+	return this->Runtime.FixedFromLPRO( (LPRO)StoredObject);
 }

@@ -2,7 +2,7 @@
     "About": {
         "Name": "Xable Object",
         "Author": "Samuel Benton",
-        "Copyright": "Copyright © 2014 Xable Enterprises",
+        "Copyright": "Copyright © 2014 - 2015 Xable Enterprises",
         "Comment": "An extension with various functions/abilities.",
         "URL": "http://www.xable.us/xable-object.html",
         "Help": "http://www.xable.us/xable-object.html",
@@ -10,36 +10,42 @@
     },
     "ActionMenu": 
 	[
-		[0, "Custom Action Comment"],
+		[0, "Action Comment"],
+		"Separator",
 		
 		["Objects",
-			[1, "Set internal object"],
-			[2, "Change X Position"],
-			[3, "Change Y Position"],
-			[4, "Change Angle"],
-
+			["Object Storage",
+				[1, "Store internal object via Object Picker"],
+				[6, "Store internal object via Fixed Value"],
+				"Separator",
+				[5, "Forget Stored Object"],
+			],
+			
 			"Separator",
-
-			[5, "Remove Current Object"],
+			
+			["Object Manipulation",
+				[4, "Change Stored Object's Angle"],
+				[2, "Change Stored Object's X Position"],
+				[3, "Change Stored Object's Y Position"],
+			],
 		],
-		
-		"Separator",
 	],
 
     "ConditionMenu": 
 	[
 		["Comments",
-			[0, "Custom Conditional Comment (Always True)"],
-			[1, "Custom Conditional Comment (Always False)"],
+			[0, "Conditional Comment (Always True)"],
+			[1, "Conditional Comment (Always False)"],
 		],
 
 		["Numerical Conditions",
-			[2, "Check bit of number"],
+			[2, "Check status of numerical bit"],
 			[5, "Check if number is prime"],
 		],
 
 		["Object Conditions",
 			[3, "Bad Object Detected"],
+			"Separator",
 			[4, "Is Object Bad?"],
 		],
 	],
@@ -49,16 +55,20 @@
 		["Numerical Expressions",
 			[0, "X mod Y"],
 			[1, "Convert x into base y"],
+			"Separator",
 			[2, "Find Nth prime number"],
+			"Separator",
 			[4, "Find sign of number"],
+			"Separator",
 			[11, "Calculate Factorial"],
 			[12, "Calculate Fibonacci Number"],
 		],
 
 		["Boolean Flags",
-			[6, "Turn bit within number On"],
-			[7, "Turn bit within number Off"],
-			[8, "Toggle bit within number"],
+			[6, "Turn numerical bit On"],
+			[7, "Turn numerical bit Off"],
+			"Separator",
+			[8, "Toggle numerical bit"],
 		],
 
 		"Separator",
@@ -68,13 +78,13 @@
 		],
 
 		["Objects",
-			[5, "Object Angle"],
-			[9, "Object X Position"],
-			[10, "Object Y Position"],
-		],
-
-		"Separator",
-		
+			[5, "Retrieve Stored Object's Angle"],
+			"Separator",
+			[9, "Retrieve Stored Object's X Position"],
+			[10, "Retrieve StoreR Object's Y Position"],
+			"Separator",
+			[13, "Retrieve Stored Object's Fixed Value"],
+		],		
     ],
     "Actions": 
 	[
@@ -84,31 +94,37 @@
 				["Text", "Custom Message"],
 			],
 		},
-		{"Title": "Set %0 to internal object",
+		{"Title": "Store %0 to internal object",
 			"Parameters":
 			[
-				["Object", "Set internal object"],
+				["Object", "Store internal object"],
 			],
 		},
-		{"Title": "Change current object by %0 pixels horizontally",
+		{"Title": "Change stored object by %0 pixels horizontally",
 			"Parameters":
 			[
 				["Integer", "Change in X-Position"],
 			],
 		},	
-		{"Title": "Change current object by %0 pixels vertically",
+		{"Title": "Change stored object by %0 pixels vertically",
 			"Parameters":
 			[
 				["Integer", "Change in Y-Position"],
 			],
 		},	
-		{"Title": "Rotate current object by %0 degrees",
+		{"Title": "Rotate stored object by %0 degrees",
 			"Parameters":
 			[
-				["Float", "Change in angle"],
+				["Integer", "Change in angle"],
 			],
 		},
-		{"Title": "Forget current object",
+		{"Title": "Forget stored object",
+		},
+		{"Title": "Store object whose fixed value is %0",
+			"Parameters":
+			[
+				["Integer", "Object's Fixed Value"],
+			],
 		},
 	],
 
@@ -139,7 +155,7 @@
 		{"Title": "%o Bad Object has been detected",
 			"Triggered": true
 		},
-		{"Title": "%o Is current object a bad object?",
+		{"Title": "%o Is stored object a bad object?",
 			"Triggered": false
 		},
 		{"Title": "%o Is %0 a prime number?",
@@ -193,7 +209,7 @@
             ]
         },
         {"Title": "ObjectAngle(",
-         "Returns": "Float",
+         "Returns": "Int",
         },
 		{"Title": "FlagOn(",
          "Returns": "Integer",
@@ -238,6 +254,9 @@
 		 [
 			["Integer","Fibonacci Index"],
 		 ]
+        },
+		{"Title": "ObjectFixedValue(",
+         "Returns": "Integer",
         },
     ]
 }

@@ -1,10 +1,8 @@
 
 #include "Common.h"
 
-
 void Extension::ActionComment(TCHAR * message)
 {
-
 }
 
 void Extension::SetObject(LPRDATA object)
@@ -12,9 +10,49 @@ void Extension::SetObject(LPRDATA object)
 		StoredObject = object;
 }
 
+void Extension::SetObjectFixedValue(int fixedvalue)
+{
+	LPRDATA buffer = (LPRDATA)this->Runtime.LPROFromFixed(fixedvalue);
+	
+		if(buffer != NULL)
+		{
+			StoredObject = buffer;
+		}
+
+		else
+		{
+			ClearObject();
+		}
+}
+
+void Extension::ChangeAngle(int deltaAngle)
+{
+	if( IsObjectStillValid() )
+	{
+		if(IsProductMMF2())
+		{
+			ObjectChanged();
+			((LPRO)StoredObject)->roc.rcAngle += deltaAngle;
+		}
+
+		// Due to some unknown change from MMF2 to Clickteam Fusion, rcAngle return an unknown value (possibly a pointer or a memory location)
+		// As such, in Clickteam Fusion, this action does nothing. The stored object is not cleared
+		else
+		{
+			return;
+		}
+	}
+
+	else
+	{
+		Runtime.GenerateEvent(InvalidObject);
+		ClearObject();
+	}
+}
+
 void Extension::IncrementX(int deltaX)
 {
-	if((((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject != NULL)
+	if(IsObjectStillValid())
 	{
 		ObjectChanged();
 		StoredObject->rHo.hoX += deltaX;
@@ -28,7 +66,7 @@ void Extension::IncrementX(int deltaX)
 
 void Extension::IncrementY(int deltaY)
 {
-	if((((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject != NULL)
+	if(IsObjectStillValid())
 	{
 		ObjectChanged();
 		StoredObject->rHo.hoY += deltaY;
@@ -40,31 +78,14 @@ void Extension::IncrementY(int deltaY)
 	}
 }
 
-// Currently does nothing
-// Setting "StoredObject" to null here crashes the entire extension
+// Sets the StoredObject to a value which will not modify any other object (setting to NULL crashes the application)
 void Extension::ClearObject()
 {
-	StoredObject = NULL;
+	StoredObject = rdPtr;
 }
 
 
-// Allows position, angle, other properties of objects to be updated
 void Extension::ObjectChanged()
 {
 	((LPRO)StoredObject)->roc.rcChanged = true;
-}
-
-void Extension::ChangeAngle(float deltaAngle)
-{
-	if( (((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject)
-	{
-		ObjectChanged();
-		((LPRO)StoredObject)->roc.rcAngle += (ANGLETYPE)deltaAngle;
-	}
-
-	else
-	{
-		Runtime.GenerateEvent(InvalidObject);
-		ClearObject();
-	}
 }

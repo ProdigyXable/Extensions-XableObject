@@ -18,29 +18,22 @@ public:
     Extension(LPRDATA rdPtr, LPEDATA edPtr, fpcob cobPtr);
     ~Extension();
 
+	// Custom variable for this object.
 	LPRDATA HandlerObject;
 
+	// Returns true if the stored object is still valid. It is not valid if the stored object equals its default value (rdPtr)
+	// or if its relating object is about to be destroyed
+	boolean IsObjectStillValid()
+	{
+		return (((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject != rdPtr;
+	}
 
-	/*  Add any data you want to store in your extension to this class
-        (eg. what you'd normally store in rdPtr)
-
-        Unlike rdPtr, you can store real C++ objects with constructors
-        and destructors, without having to call them manually or store
-        a pointer.
-    */
-
-    // int MyVariable;
-
-
-
-
-    /*  Add your actions, conditions and expressions as real class member
-        functions here. The arguments (and return type for expressions) must
-        match EXACTLY what you defined in the JSON.
-
-        Remember to link the actions, conditions and expressions to their
-        numeric IDs in the class constructor (Extension.cpp)
-    */
+	// Returns true if the MMFusion build is 280 or less (meaning is the product lower than Clickteam Fusion). 
+	// Helps with diffculties within the rcAngle variable.
+	boolean IsProductMMF2()
+	{
+		return (SDK->mV->mvGetVersion != NULL && (SDK->mV->mvGetVersion() & MMFBUILD_MASK) < 280);
+	}
 
     // Expressions
         unsigned int Modulus(int x, int y);
@@ -49,9 +42,10 @@ public:
 
 		byte Sign(double number);
 		int EventNum();
-		float ObjectAngle();
+		int ObjectAngle();
 		int ObjectX();
 		int ObjectY();
+		int ObjectFixedValue();
 
 		int IntBitFlagOn(int number, int bit_index);
 		int IntBitFlagOff(int number, int bit_index);
@@ -59,13 +53,15 @@ public:
 		int Factorial(int number);
 		int FiboNumber(int number);
 
+
 	// Actions
 		void ActionComment(TCHAR * message);
 
-		void SetObject(LPRDATA ffobject);
+		void SetObject(LPRDATA object);
+		void SetObjectFixedValue(int fixedvalue);
 		void IncrementX(int deltaX);
 		void IncrementY(int deltaY);
-		void ChangeAngle(float deltaAngle);
+		void ChangeAngle(int deltaAngle);
 		void ObjectChanged();
 
 		void ExpressionComment(TCHAR * message);

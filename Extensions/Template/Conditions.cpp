@@ -25,15 +25,7 @@ bool Extension::BadObject()
 
 bool Extension::BadObjectTest()
 {
-	if((((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject != NULL)
-	{
-		return false;
-	}
-
-	else
-	{
-		return true;
-	}
+	return StoredObject == rdPtr;
 }
 
 bool Extension::PrimeTest(int number)

@@ -409,9 +409,9 @@ LPVOID WINAPI DLLExport GetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID)
 //
 //	// Returns a string
 	case Update_Date:
-		return new CPropDataValue("December 17th, 2014");
+		return new CPropDataValue("May 23rd, 2015");
 	case Contact_Info:
-		return new CPropDataValue("ProdigyXable@gmail.com");
+		return new CPropDataValue("Xable@xable.us");
 //
 //	// Returns the value of the combo box
 //	case PROPID_COMBO:
