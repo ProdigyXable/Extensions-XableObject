@@ -42,9 +42,9 @@ PropData Properties[] = {
 // -------
 //	PropData_Group		(PROPID_TEXTTITLE,	IDS_PROP_TEXTTITLE,		IDS_PROP_TEXTTITLE),
 //	PropData_EditString	(PROPID_TEXT,		IDS_PROP_TEXT,			IDS_PROP_TEXT_INFO),
-	PropData_Group(Version_Group,		(UINT)"Version Numbeer",	(UINT)""),
+	PropData_Group(Version_Group,		(UINT)"Version Number",	(UINT)""),
 	PropData_StaticString(Update_Date,	(UINT)"Extension Version",	(UINT)"The last time the extension was updated. Also the version of the extension"),
-	PropData_StaticString(Contact_Info,	(UINT)"Contact Information",	(UINT)"Contact information incase a problem/error occurs"),
+	PropData_StaticString(Contact_Info,	(UINT)"Contact Information",(UINT)"Contact information in case a problem/error occurs"),
 //	PropData_ComboBox	(PROPID_COMBO,		IDS_PROP_COMBO,			IDS_PROP_COMBO,	ComboList),
 //	PropData_Color		(PROPID_COLOR,		IDS_PROP_COLOR,			IDS_PROP_COLOR_INFO),
 
@@ -153,8 +153,12 @@ BOOL WINAPI SetEditSize(LPMV mv, LPEDATA edPtr, int cx, int cy)
 //
 void WINAPI	DLLExport PutObject(mv _far *mV, fpLevObj loPtr, LPEDATA edPtr, ushort cpt)
 {
-#ifndef RUN_ONLY
-#endif // !defined(RUN_ONLY)
+	#ifndef RUN_ONLY
+	if((mV->mvGetVersion() & MMFBUILD_MASK) >= 280)
+	{
+		MessageBoxA(0,"In this extension version, the \"Change Stored Object's Angle\" action and \"Retrieve Stored Object's Angle\" expresion do not work in Clickteam Fusion. These functions have will have no effect.\n\nClick the \"Help\" button in the \"About\" properties to check for an update to this extension. These functions work as intended in MMF2" , "Extension Usage Warning", MB_ICONEXCLAMATION |MB_OK);
+	}	
+	#endif // !defined(RUN_ONLY)
 
 }
 
@@ -409,7 +413,7 @@ LPVOID WINAPI DLLExport GetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID)
 //
 //	// Returns a string
 	case Update_Date:
-		return new CPropDataValue("May 23rd, 2015");
+		return new CPropDataValue("May 26th, 2015");
 	case Contact_Info:
 		return new CPropDataValue("Xable@xable.us");
 //
