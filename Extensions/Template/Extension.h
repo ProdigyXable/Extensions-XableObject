@@ -10,7 +10,7 @@ public:
     static const int MinimumBuild = 251;
     static const int Version = 1;
 
-    static const int OEFLAGS = 0;
+	static const int OEFLAGS = OEFLAG_VALUES;
     static const int OEPREFS = 0;
     
     static const int WindowProcPriority = 100;
@@ -59,9 +59,9 @@ public:
 
 		void SetObject(LPRDATA object);
 		void SetObjectFixedValue(int fixedvalue);
-		void IncrementX(int deltaX);
-		void IncrementY(int deltaY);
-		void ChangeAngle(int deltaAngle);
+		void ChangeX(int deltaX);
+		void ChangeY(int deltaY);
+		void ChangeAngle(float deltaAngle);
 		void ObjectChanged();
 
 		void ExpressionComment(TCHAR * message);
@@ -84,9 +84,6 @@ public:
     void Action(int ID, LPRDATA rdPtr, long param1, long param2);
     long Condition(int ID, LPRDATA rdPtr, long param1, long param2);
     long Expression(int ID, LPRDATA rdPtr, long param);
-
-
-
 
     /*  These replace the functions like HandleRunObject that used to be
         implemented in Runtime.cpp. They work exactly the same, but they're

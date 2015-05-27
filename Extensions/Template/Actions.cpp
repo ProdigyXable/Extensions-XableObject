@@ -5,11 +5,14 @@ void Extension::ActionComment(TCHAR * message)
 {
 }
 
+// Sets the store object based on the object picker within MMFusion
 void Extension::SetObject(LPRDATA object)
 {
 		StoredObject = object;
 }
 
+// Sets the stored object based on a fixed value
+// May cause crashes on certain objects (no such objects found)
 void Extension::SetObjectFixedValue(int fixedvalue)
 {
 	LPRDATA buffer = (LPRDATA)this->Runtime.LPROFromFixed(fixedvalue);
@@ -25,7 +28,8 @@ void Extension::SetObjectFixedValue(int fixedvalue)
 		}
 }
 
-void Extension::ChangeAngle(int deltaAngle)
+// Rotates the stored object by the specified angle
+void Extension::ChangeAngle(float deltaAngle)
 {
 	if( IsObjectStillValid() )
 	{
@@ -43,6 +47,7 @@ void Extension::ChangeAngle(int deltaAngle)
 		}
 	}
 
+	// Invalid objects must be cleared. An error condition ("Is Object Bad") is also generated
 	else
 	{
 		Runtime.GenerateEvent(InvalidObject);
@@ -50,13 +55,16 @@ void Extension::ChangeAngle(int deltaAngle)
 	}
 }
 
-void Extension::IncrementX(int deltaX)
+// Changes the y-position of the stored object by the specified amount
+void Extension::ChangeX(int deltaX)
 {
 	if(IsObjectStillValid())
 	{
 		ObjectChanged();
 		StoredObject->rHo.hoX += deltaX;
 	}
+
+	// Invalid objects must be cleared. An error condition ("Is Object Bad") is also generated
 	else
 	{
 		Runtime.GenerateEvent(InvalidObject);
@@ -64,13 +72,16 @@ void Extension::IncrementX(int deltaX)
 	}
 }
 
-void Extension::IncrementY(int deltaY)
+// Changes the y-position of the stored object by the specified amount
+void Extension::ChangeY(int deltaY)
 {
 	if(IsObjectStillValid())
 	{
 		ObjectChanged();
 		StoredObject->rHo.hoY += deltaY;
 	}
+
+	// Invalid objects must be cleared. An error condition ("Is Object Bad") is also generated
 	else
 	{
 		Runtime.GenerateEvent(InvalidObject);
@@ -84,7 +95,7 @@ void Extension::ClearObject()
 	StoredObject = rdPtr;
 }
 
-
+// Tells MMFusion the stored object is changed and needs to be redrawn to the screen
 void Extension::ObjectChanged()
 {
 	((LPRO)StoredObject)->roc.rcChanged = true;

@@ -156,7 +156,7 @@ void WINAPI	DLLExport PutObject(mv _far *mV, fpLevObj loPtr, LPEDATA edPtr, usho
 	#ifndef RUN_ONLY
 	if((mV->mvGetVersion() & MMFBUILD_MASK) >= 280)
 	{
-		MessageBoxA(0,"In this extension version, the \"Change Stored Object's Angle\" action and \"Retrieve Stored Object's Angle\" expresion do not work in Clickteam Fusion. These functions have will have no effect.\n\nClick the \"Help\" button in the \"About\" properties to check for an update to this extension. These functions work as intended in MMF2" , "Extension Usage Warning", MB_ICONEXCLAMATION |MB_OK);
+		MessageBoxA(0,"In this extension version, the \"Change Stored Object's Angle\" action and \"Retrieve Stored Object's Angle\" expresion do not work in Clickteam Fusion. These functions have will have no effect.\n\nClick the \"Help\" button in the \"About\" properties to check for an update to this extension. These functions work as intended in MMF2" , "Extension Usage Warning", MB_ICONEXCLAMATION | MB_OK | MB_TASKMODAL | MB_TOPMOST);
 	}	
 	#endif // !defined(RUN_ONLY)
 
@@ -413,7 +413,7 @@ LPVOID WINAPI DLLExport GetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID)
 //
 //	// Returns a string
 	case Update_Date:
-		return new CPropDataValue("May 26th, 2015");
+		return new CPropDataValue("May 27th, 2015");
 	case Contact_Info:
 		return new CPropDataValue("Xable@xable.us");
 //

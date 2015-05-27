@@ -209,7 +209,7 @@
             ]
         },
         {"Title": "ObjectAngle(",
-         "Returns": "Int",
+         "Returns": "Float",
         },
 		{"Title": "FlagOn(",
          "Returns": "Integer",

@@ -33,8 +33,8 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
 
 	LinkAction(0, ActionComment);
 	LinkAction(1, SetObject);
-	LinkAction(2, IncrementX);
-	LinkAction(3, IncrementY);
+	LinkAction(2, ChangeX);
+	LinkAction(3, ChangeY);
 	LinkAction(4, ChangeAngle);
 	LinkAction(5, ClearObject);
 	LinkAction(6, SetObjectFixedValue);
