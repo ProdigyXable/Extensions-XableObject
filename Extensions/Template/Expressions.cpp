@@ -1,12 +1,9 @@
 
 #include "Common.h"
 
-
-
 // Properly returns the circular modulus of negatives numbers
 unsigned int Extension::Modulus(int x, int y)
 {
-
 	if (y <= 1)
 	{
 		return 0;
@@ -131,7 +128,6 @@ byte Extension::Sign(double number)
 // Returns the current angle of an object modulus'ed 360 with any floating remainders
 int Extension::ObjectAngle()
 {
-	
 	if(IsObjectStillValid())
 	{
 		
@@ -213,11 +209,23 @@ int Extension::ObjectY()
 
 int Extension::Factorial(int number)
 {
-	if(number <= 1)
+	if(number >= 0)
 	{
-		return 1;
+		int * saved = new int[number + 1];
+		saved[0] = 1;
+
+		for(int n = 1; n <= number; n++)
+		{
+			saved[n] = saved[n-1] * n;
+		}
+
+		return saved[number];
 	}
-	return number * Factorial(number - 1);
+
+	else
+	{
+		return -1;
+	}
 }
 
 int Extension::FiboNumber(int number)
@@ -236,6 +244,7 @@ int Extension::FiboNumber(int number)
 		return saved[number];
 
 	}
+
 	else if(number == 0 )
 	{
 		return 0;

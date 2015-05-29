@@ -12,23 +12,18 @@
 	[
 		[0, "Action Comment"],
 		"Separator",
-		
-		["Objects",
-			["Object Storage",
-				[1, "Store internal object via Object Picker"],
-				[6, "Store internal object via Fixed Value"],
-				"Separator",
-				[5, "Forget Stored Object"],
-			],
-			
+		["Object Storage",
+			[1, "Store internal object via Object Picker"],
+			[6, "Store internal object via Fixed Value"],
 			"Separator",
-			
-			["Object Manipulation",
-				[4, "Change Stored Object's Angle"],
-				[2, "Change Stored Object's X Position"],
-				[3, "Change Stored Object's Y Position"],
-			],
+			[5, "Forget Stored Object"],
 		],
+		["Object Manipulation",
+			[4, "Change Stored Object's Angle"],
+			[2, "Change Stored Object's X Position"],
+			[3, "Change Stored Object's Y Position"],
+		],
+		"Separator"
 	],
 
     "ConditionMenu": 
@@ -81,7 +76,7 @@
 			[5, "Retrieve Stored Object's Angle"],
 			"Separator",
 			[9, "Retrieve Stored Object's X Position"],
-			[10, "Retrieve StoreR Object's Y Position"],
+			[10, "Retrieve Stored Object's Y Position"],
 			"Separator",
 			[13, "Retrieve Stored Object's Fixed Value"],
 		],		

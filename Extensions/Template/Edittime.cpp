@@ -42,7 +42,7 @@ PropData Properties[] = {
 // -------
 //	PropData_Group		(PROPID_TEXTTITLE,	IDS_PROP_TEXTTITLE,		IDS_PROP_TEXTTITLE),
 //	PropData_EditString	(PROPID_TEXT,		IDS_PROP_TEXT,			IDS_PROP_TEXT_INFO),
-	PropData_Group(Version_Group,		(UINT)"Version Number",	(UINT)""),
+	PropData_Group(Version_Group,		(UINT)"Version Number",	(UINT)"The current version of the extension"),
 	PropData_StaticString(Update_Date,	(UINT)"Extension Version",	(UINT)"The last time the extension was updated. Also the version of the extension"),
 	PropData_StaticString(Contact_Info,	(UINT)"Contact Information",(UINT)"Contact information in case a problem/error occurs"),
 //	PropData_ComboBox	(PROPID_COMBO,		IDS_PROP_COMBO,			IDS_PROP_COMBO,	ComboList),
@@ -156,7 +156,7 @@ void WINAPI	DLLExport PutObject(mv _far *mV, fpLevObj loPtr, LPEDATA edPtr, usho
 	#ifndef RUN_ONLY
 	if((mV->mvGetVersion() & MMFBUILD_MASK) >= 280)
 	{
-		MessageBoxA(0,"In this extension version, the \"Change Stored Object's Angle\" action and \"Retrieve Stored Object's Angle\" expresion do not work in Clickteam Fusion. These functions have will have no effect.\n\nClick the \"Help\" button in the \"About\" properties to check for an update to this extension. These functions work as intended in MMF2" , "Extension Usage Warning", MB_ICONEXCLAMATION | MB_OK | MB_TASKMODAL | MB_TOPMOST);
+		MessageBoxA(0,"In this extension version, the \"Change Stored Object's Angle\" action and \"Retrieve Stored Object's Angle\" expression do not work in Clickteam Fusion and these functions have no effect.\n\nClick the \"Help\" button in the \"About\" properties of this extension to visit a link which may contain updates for this extension. These functions work as intended in MMF2" , "Extension Usage Warning", MB_ICONEXCLAMATION | MB_OK | MB_TASKMODAL);
 	}	
 	#endif // !defined(RUN_ONLY)
 
