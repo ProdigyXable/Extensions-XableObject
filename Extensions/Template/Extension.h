@@ -23,22 +23,22 @@ public:
 
 	// Returns true if the stored object is still valid. It is not valid if the stored object equals its default value (rdPtr)
 	// or if its relating object is about to be destroyed
-	boolean IsObjectStillValid()
+	boolean isObjectStillValid()
 	{
 		return (((LPRO)StoredObject)->roHo.hoFlags & HOF_DESTROYED) == false && StoredObject != rdPtr;
 	}
 
 	// Returns true if the MMFusion build is 280 or less (meaning is the product lower than Clickteam Fusion). 
 	// Helps with diffculties within the rcAngle variable.
-	boolean IsProductMMF2()
+	boolean isProductMMF2()
 	{
 		return (SDK->mV->mvGetVersion != NULL && (SDK->mV->mvGetVersion() & MMFBUILD_MASK) < 280);
 	}
 
     // Expressions
-        unsigned int Modulus(int x, int y);
+        unsigned int Modulus(int dividend, int divisor);
 		TCHAR * BaseConversionString(int number, int base);
-		long FindPrime(int number,  int nth_number);
+		long FindPrime(int initialNumber,  int nth_number);
 
 		byte Sign(double number);
 		int EventNum();

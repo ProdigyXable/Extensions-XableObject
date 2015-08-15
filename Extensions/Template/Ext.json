@@ -165,15 +165,15 @@
 
 
     "Expressions": [
-        {"Title": "Modx(",
+        {"Title": "Mod(",
          "Returns": "Integer",
          "Parameters": 
 			[
-                ["Integer","First number"],
-                ["Integer","Second number"],
+                ["Integer","Dividend"],
+                ["Integer","Divisor"],
             ]
         },
-		{"Title": "Base(",
+		{"Title": "Base$(",
          "Returns": "Text",
          "Parameters": 
 			[
@@ -189,7 +189,7 @@
                 ["Integer","Nth following Prime Number"],
             ]
         },
-		{"Title": "Comment(",
+		{"Title": "Comment$(",
          "Returns": "Text",
          "Parameters": 
 			[

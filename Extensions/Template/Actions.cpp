@@ -31,9 +31,9 @@ void Extension::SetObjectFixedValue(int fixedvalue)
 // Rotates the stored object by the specified angle
 void Extension::ChangeAngle(float deltaAngle)
 {
-	if( IsObjectStillValid() )
+	if( isObjectStillValid() )
 	{
-		if(IsProductMMF2())
+		if(isProductMMF2())
 		{
 			ObjectChanged();
 			((LPRO)StoredObject)->roc.rcAngle += deltaAngle;
@@ -58,7 +58,7 @@ void Extension::ChangeAngle(float deltaAngle)
 // Changes the y-position of the stored object by the specified amount
 void Extension::ChangeX(int deltaX)
 {
-	if(IsObjectStillValid())
+	if(isObjectStillValid())
 	{
 		ObjectChanged();
 		StoredObject->rHo.hoX += deltaX;
@@ -75,7 +75,7 @@ void Extension::ChangeX(int deltaX)
 // Changes the y-position of the stored object by the specified amount
 void Extension::ChangeY(int deltaY)
 {
-	if(IsObjectStillValid())
+	if(isObjectStillValid())
 	{
 		ObjectChanged();
 		StoredObject->rHo.hoY += deltaY;

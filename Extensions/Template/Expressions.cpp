@@ -2,26 +2,26 @@
 #include "Common.h"
 
 // Properly returns the circular modulus of negatives numbers
-unsigned int Extension::Modulus(int x, int y)
+unsigned int Extension::Modulus(int dividend, int divisor)
 {
-	if (y <= 1)
+	if (divisor <= 1)
 	{
 		return 0;
 	}
 
 	// Ensures X is positive before the modulus operation
-	else if (x < 0)
+	else if (dividend < 0)
 	{
 		do
 		{
-			x += abs(y);
+			dividend += abs(divisor);
 		}
-		while(x < 0);
+		while(dividend < 0);
 	}
 
-	if (x >= 0)
+	if (dividend >= 0)
 	{
-		return (x % y);
+		return (dividend % divisor);
 	}
 
 	return 0;
@@ -29,39 +29,52 @@ unsigned int Extension::Modulus(int x, int y)
 
 }
 
-// Converts a base 10 number to a specified based, works best with 2 - 16 base, extendable to base 36
+// Converts a base positive 10 number to a specified based, works best with 2 - 16 base, extendable to base 36
+// Not intended for negative numbers
 TCHAR * Extension::BaseConversionString(int number, int base)
 {
+	const int asciiValueForA = 65;
+	const int maxBase = 36;
+
+	if(number <= 0)
+	{
+		TCHAR * New = (TCHAR *) Runtime.Allocate(2);
+		New[0] = '0';
+		New[1] = '\0';
+
+		return New;
+	}
+
 	if(base < 2)
 	{
 		base = 2;
 	}
 
-	else if(base > 36)
+	else if(base > maxBase)
 	{
-		base = 36;
+		base = maxBase;
 	}
 
- 	int max =  pow(base,floor(log(number)/log(base)));
+ 	int maxLength =  pow( base, floor( log( number ) / log( base ) ) );
 	int index = 0;
 	
-	TCHAR * New = (TCHAR *) Runtime.Allocate(max+1);
+	TCHAR * New = (TCHAR *) Runtime.Allocate( maxLength + 1 );
 
-	while(max > 0)
+	while( maxLength > 0 )
 	{
-		if((number / max) % base < 10)
+		if( ( number / maxLength ) % base < 10 )
 		{
-			New[index] = (TCHAR)(((number / max) % base)+ 48);
+			New[index] = (TCHAR)( ( ( number / maxLength ) % base ) + 48 );
 		}
 
-		else if(((number / max) % base >= 10) && ((number / max) % base < 36))
+		else if( ( (number / maxLength ) % base >= 10)  && ( ( number / maxLength ) % base < maxBase ))
 		{
-			New[index] = (TCHAR)(65 + (((number / max) % base)-10));
+			New[index] = (TCHAR)( asciiValueForA + ( ( ( number / maxLength ) % base ) - 10 ) );
 		}
 
 		index++;
 		
-		max = (max / base);
+		maxLength = (maxLength / base);
 	}
 
 	New[index] = '\0';
@@ -69,7 +82,7 @@ TCHAR * Extension::BaseConversionString(int number, int base)
 }
 
 // Allows you to find the nth prime number after an initial number
-long Extension::FindPrime(int number,  int nth_number)
+long Extension::FindPrime(int initialNumber,  int nth_number)
 {
 	long count = 0;
 	bool detect = false;
@@ -80,19 +93,20 @@ long Extension::FindPrime(int number,  int nth_number)
 		nth_number = -1;
 	}
 
-	number = max(2,number);
+	// Implments lower limit on initial number
+	initialNumber = max(2,initialNumber);
 
 	while(count < nth_number)
 	{
-		if(Extension::PrimeTest(number))
+		if(Extension::PrimeTest(initialNumber))
 		{
 			count++;
 		}
 
-		number++;
+		initialNumber++;
 	}
 
-	return (number - 1);
+	return (initialNumber - 1);
 }
 
 // Allows you to put a custom comment into the Event Editor/Event List Editor
@@ -118,6 +132,7 @@ byte Extension::Sign(double number)
 		return 0;
 	}
 
+	// Unforseen input such as -1.#IND. Anything getting here likely to crash program
 	else
 	{
 		return -2;
@@ -128,13 +143,13 @@ byte Extension::Sign(double number)
 // Returns the current angle of an object modulus'ed 360 with any floating remainders
 int Extension::ObjectAngle()
 {
-	if(IsObjectStillValid())
+	if(isObjectStillValid())
 	{
 		
-		if(IsProductMMF2())
+		if(isProductMMF2())
 		{
-			ANGLETYPE leftovers = ((LPRO)StoredObject)->roc.rcAngle - (int)((LPRO)StoredObject)->roc.rcAngle;
-			return leftovers + Modulus(((LPRO)StoredObject)->roc.rcAngle, 360);
+			ANGLETYPE angleLeftovers = ((LPRO)StoredObject)->roc.rcAngle - (int)((LPRO)StoredObject)->roc.rcAngle;
+			return angleLeftovers + Modulus(((LPRO)StoredObject)->roc.rcAngle, 360);
 		}
 
 		// Due to diffculties in the rcAngle, this expression does not work in Clickteam Fusion.
@@ -180,7 +195,7 @@ int Extension::IntBitFlagToggle(int number, int bit_index)
 // Returns the X position of the stored object
 int Extension::ObjectX()
 {
-	if(IsObjectStillValid())
+	if(isObjectStillValid())
 	{
 		return StoredObject->rHo.hoX;
 	}
@@ -195,7 +210,7 @@ int Extension::ObjectX()
 // Returns the Y position of the stored object
 int Extension::ObjectY()
 {
-	if(IsObjectStillValid())
+	if(isObjectStillValid())
 	{
 		return StoredObject->rHo.hoY;
 	}

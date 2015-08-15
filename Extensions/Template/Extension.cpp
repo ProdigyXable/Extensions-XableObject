@@ -72,7 +72,7 @@ Extension::~Extension()
 
 short Extension::Handle()
 {
-	if( !IsObjectStillValid() )
+	if( !isObjectStillValid() )
 	{
 		ClearObject();
 	}

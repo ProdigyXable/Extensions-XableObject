@@ -28,6 +28,7 @@ bool Extension::BadObjectTest()
 	return StoredObject == rdPtr;
 }
 
+// Performance can be improved by hardcoding first 100, 1000, 10,000, etc... prime numbers into array
 bool Extension::PrimeTest(int number)
 {
 	if(number <= 0)
@@ -49,7 +50,7 @@ bool Extension::PrimeTest(int number)
 	for(int index = 2; index <= max && !detected; index++)
 	{
 		
-		if((number % index == 0 ))
+		if((number % index) == 0 )
 		{
 			detected = true;
 		}
