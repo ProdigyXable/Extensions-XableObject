@@ -280,3 +280,22 @@ int Extension::ObjectFixedValue()
 {
 	return this->Runtime.FixedFromLPRO( (LPRO)StoredObject);
 }
+
+
+float Extension::cartToPolarRadii(float X, float Y)
+{
+	return sqrt( pow(X,2) + pow(Y,2) );
+}
+float Extension::cartToPolarAngle(float X, float Y)
+{
+	return (180 / MATH_PI) * atan2f(Y,X);
+}
+float Extension::polarToCartX(float radius, float angle)
+{
+	return radius * cos(MATH_PI / 180 * angle);
+}
+
+float Extension::polarToCartY(float radius, float angle)
+{
+	return radius * sin(MATH_PI / 180  * (angle + MMFusionAngle_Shift));
+}

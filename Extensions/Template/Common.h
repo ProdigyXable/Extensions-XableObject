@@ -11,6 +11,8 @@
 
 // -- Custom Shortcut Definitions --
 #define StoredObject Extension::HandlerObject
+#define MATH_PI 3.14159265358979323846
+#define MMFusionAngle_Shift 180 // In MMFusion, angles start at right and goes counter-clockwise. The sin function goes clockwise. This shift corrects this.
 
 // Shortcut to create the immediate condition 
 #define InvalidObject 3

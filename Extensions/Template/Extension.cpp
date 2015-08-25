@@ -30,6 +30,10 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
 	LinkExpression(11, Factorial);
 	LinkExpression(12, FiboNumber);
 	LinkExpression(13, ObjectFixedValue);
+	LinkExpression(14, cartToPolarRadii);
+	LinkExpression(15, cartToPolarAngle);
+	LinkExpression(16, polarToCartX);
+	LinkExpression(17, polarToCartY);
 
 	LinkAction(0, ActionComment);
 	LinkAction(1, SetObject);

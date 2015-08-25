@@ -72,6 +72,18 @@
 			[3, "Expression Comment"],
 		],
 
+		["Coordinate System Transformations",
+			["Cartesian Transformation",
+				[16, "Get Cartesian Coordinate System X"],
+				[17, "Get Cartesian Coordinate System Y"],
+			],
+			["Polar Transformation",
+				[14, "Get Polar Coordinate System Radius"],
+				[15, "Get Polar Coordinate System Angle"],
+			],
+
+		],
+
 		["Objects",
 			[5, "Retrieve Stored Object's Angle"],
 			"Separator",
@@ -173,6 +185,7 @@
                 ["Integer","Divisor"],
             ]
         },
+		
 		{"Title": "Base$(",
          "Returns": "Text",
          "Parameters": 
@@ -181,6 +194,7 @@
                 ["Integer","Second number"],
             ]
         },
+		
 		{"Title": "Prime(",
          "Returns": "Integer",
          "Parameters": 
@@ -189,6 +203,7 @@
                 ["Integer","Nth following Prime Number"],
             ]
         },
+		
 		{"Title": "Comment$(",
          "Returns": "Text",
          "Parameters": 
@@ -196,6 +211,7 @@
                 ["Text","Comment message"],
             ]
         },
+		
 		{"Title": "Sign(",
          "Returns": "Integer",
          "Parameters": 
@@ -203,39 +219,45 @@
                 ["Integer","Number"],
             ]
         },
-        {"Title": "ObjectAngle(",
+        
+		{"Title": "ObjectAngle(",
          "Returns": "Float",
         },
 		{"Title": "FlagOn(",
          "Returns": "Integer",
          "Parameters": 
 			[
-                ["Integer","Flag/Int"],
+                ["Integer","Bitmask or Integer"],
 				["Integer","Flag Index"],
             ]
         },
+		
 		{"Title": "FlagOff(",
          "Returns": "Integer",
          "Parameters": 
 			[
-                ["Integer","Flag/Int"],
+                ["Integer","Bitmask or Integer"],
 				["Integer","Flag Index"],
             ]
         },
+		
 		{"Title": "FlagSwap(",
          "Returns": "Integer",
          "Parameters": 
 			[
-                ["Integer","Flag/Int"],
+                ["Integer","Bitmask or Integer"],
 				["Integer","Flag Index"],
             ]
         },
+		
 		{"Title": "ObjectX(",
          "Returns": "Integer",
         },
+		
 		{"Title": "ObjectY(",
          "Returns": "Integer",
         },
+		
 		{"Title": "Factorial(",
          "Returns": "Integer",
 		 "Parameters":
@@ -243,6 +265,7 @@
 			["Integer","Positive Integer"],
 		 ]
         },
+		
 		{"Title": "FiboNumber(",
          "Returns": "Integer",
 		 "Parameters":
@@ -250,8 +273,45 @@
 			["Integer","Fibonacci Index"],
 		 ]
         },
+		
 		{"Title": "ObjectFixedValue(",
          "Returns": "Integer",
+        },
+
+		{"Title": "PolarRadius(",
+         "Returns": "Float",
+		 "Parameters":
+		 [
+			["Float","Cartesian X Coordinate"],
+			["Float","Cartesian Y Coordinate"],
+		 ]
+        },
+
+		{"Title": "PolarAngle(",
+         "Returns": "Float",
+		 "Parameters":
+		 [
+			["Float","Cartesian X Coordinate"],
+			["Float","Cartesian Y Coordinate"],
+		 ]
+        },
+
+		{"Title": "CartesianX(",
+         "Returns": "Float",
+		 "Parameters":
+		 [
+			["Float","Polar Radius Coordinate"],
+			["Float","Polar Angle Coordinate"],
+		 ]
+        },
+
+		{"Title": "CartesianY(",
+         "Returns": "Float",
+		 "Parameters":
+		 [
+			["Float","Polar Radius Coordinate"],
+			["Float","Polar Angle Coordinate"],
+		 ]
         },
     ]
 }

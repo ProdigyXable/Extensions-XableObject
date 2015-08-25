@@ -1,7 +1,7 @@
-﻿Build started 8/14/2015 08:51:53 PM.
+﻿Build started 8/25/2015 09:51:46 AM.
      1>Project "C:\Users\Xable Enterprises\Documents\GitHub\Extensions-XableObject\Extensions\Template\Template.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\..\Inc /I.\ /Zi /nologo /W3 /WX- /O1 /Ob1 /Oy- /D HWABETA /D COXSDK /D IN_EXT_VERSION2 /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D _WINDOWS /D EDITOR /D _VC80_UPGRADE=0x0600 /D _WINDLL /GF /Gm /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Edittime HWA\\" /Fd"Edittime HWA\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Expressions.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\..\Inc /I.\ /Zi /nologo /W3 /WX- /O1 /Ob1 /Oy- /D HWABETA /D COXSDK /D IN_EXT_VERSION2 /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D _WINDOWS /D EDITOR /D _VC80_UPGRADE=0x0600 /D _WINDLL /GF /Gm /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Edittime HWA\\" /Fd"Edittime HWA\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Lib\Edif.Edittime.cpp ..\..\Lib\Edif.General.cpp ..\..\Lib\Edif.Runtime.cpp ..\..\Lib\Edif.cpp ..\..\Lib\ObjectSelection.cpp Actions.cpp Conditions.cpp Edittime.cpp Expressions.cpp Extension.cpp General.cpp Runtime.cpp
          Expressions.cpp
      1>Expressions.cpp(58): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
      1>Expressions.cpp(152): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
@@ -9,6 +9,26 @@
      1>Expressions.cpp(173): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
      1>Expressions.cpp(181): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
      1>Expressions.cpp(190): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>Expressions.cpp(291): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>Expressions.cpp(295): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>Expressions.cpp(300): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+         Generating Code...
+         Compiling...
+         Runtime.cpp
+         General.cpp
+         Extension.cpp
+         Edittime.cpp
+         Conditions.cpp
+     1>Conditions.cpp(16): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>Conditions.cpp(48): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+         Actions.cpp
+         ObjectSelection.cpp
+         Edif.cpp
+         Edif.Runtime.cpp
+     1>..\..\Lib\Edif.Runtime.cpp(167): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+         Edif.General.cpp
+         Edif.Edittime.cpp
+         Generating Code...
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.CppBuild.targets(1137,5): warning MSB8012: TargetPath(C:\Users\Xable Enterprises\Documents\GitHub\Extensions-XableObject\Extensions\Template\Edittime HWA\XableObject.mfx) does not match the Linker's OutputFile property value (C:\Users\Xable Enterprises\Documents\GitHub\Extensions-XableObject\Extensions\Template\MFX\Extensions\HWA\XableObject.mfx). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Xable Enterprises\Documents\GitHub\Extensions-XableObject\Extensions\Template\\MFX\Extensions\HWA\XableObject.mfx" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib ..\..\lib\mmfs2.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:".\Ext.def" /MANIFEST:NO /PDB:"Edittime HWA\Template.pdb" /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"Edittime HWA\Template.lib" /MACHINE:X86 /SAFESEH /DLL "Edittime HWA\Ext.res"
@@ -48,4 +68,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:09.05
+Time Elapsed 00:00:45.87

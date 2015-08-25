@@ -52,7 +52,10 @@ public:
 		int IntBitFlagToggle(int number, int bit_index);
 		int Factorial(int number);
 		int FiboNumber(int number);
-
+		float cartToPolarRadii(float X, float Y);
+		float cartToPolarAngle(float X, float Y);
+		float polarToCartX(float radius, float angle);
+		float polarToCartY(float radius, float angle);
 
 	// Actions
 		void ActionComment(TCHAR * message);

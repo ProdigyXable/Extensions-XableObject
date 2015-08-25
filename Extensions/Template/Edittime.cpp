@@ -12,6 +12,8 @@
 
 #if !defined(RUN_ONLY)
 
+LPCSTR UpdateDateString = "August 24, 2015", EmailString = "Xable@xable.us";
+
 // PROPERTIES /////////////////////////////////////////////////////////////////
 
 // Property identifiers
@@ -413,9 +415,9 @@ LPVOID WINAPI DLLExport GetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID)
 //
 //	// Returns a string
 	case Update_Date:
-		return new CPropDataValue("August 14th, 2015");
+		return new CPropDataValue(UpdateDateString);
 	case Contact_Info:
-		return new CPropDataValue("Xable@xable.us");
+		return new CPropDataValue(EmailString);
 //
 //	// Returns the value of the combo box
 //	case PROPID_COMBO:
