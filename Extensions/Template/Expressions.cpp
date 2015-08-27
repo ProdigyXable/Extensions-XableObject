@@ -288,7 +288,17 @@ float Extension::cartToPolarRadii(float X, float Y)
 }
 float Extension::cartToPolarAngle(float X, float Y)
 {
-	return (180 / MATH_PI) * atan2f(Y,X);
+	// Error handling: If X and Y are 0, atan2() cannot be computed.
+	if (X == Y && Y == 0)
+	{
+		Runtime.GenerateEvent(InvalidAngle);
+		return 0;
+	}
+
+	else
+	{
+		return (180 / MATH_PI) * atan2f(Y,X);
+	}
 }
 float Extension::polarToCartX(float radius, float angle)
 {

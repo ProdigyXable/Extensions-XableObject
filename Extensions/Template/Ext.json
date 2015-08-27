@@ -43,6 +43,10 @@
 			"Separator",
 			[4, "Is Object Bad?"],
 		],
+
+		["Cartesian Coordinate Conditions",
+			[6, "Is Any Input Invalid?"],
+		],
 	],
 
     "ExpressionMenu": 
@@ -73,15 +77,11 @@
 		],
 
 		["Coordinate System Transformations",
-			["Cartesian Transformation",
-				[16, "Get Cartesian Coordinate System X"],
-				[17, "Get Cartesian Coordinate System Y"],
-			],
-			["Polar Transformation",
-				[14, "Get Polar Coordinate System Radius"],
-				[15, "Get Polar Coordinate System Angle"],
-			],
-
+			[16, "Get Cartesian Coordinate System X"],
+			[17, "Get Cartesian Coordinate System Y"],
+			"Separator",
+			[14, "Get Polar Coordinate System Radius"],
+			[15, "Get Polar Coordinate System Angle"],
 		],
 
 		["Objects",
@@ -171,6 +171,9 @@
 				["Integer", "Number"],
 			],
 			"Triggered": false
+		},
+		{"Title": "%o Was an invalid input received?",
+			"Triggered": true
 		},
 	],
 

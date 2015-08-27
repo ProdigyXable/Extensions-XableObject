@@ -77,6 +77,7 @@ public:
 		bool BadObject();
 		bool BadObjectTest();
 		bool PrimeTest(int number);
+		bool BadAngleInput();
 
 	// void SetObject(LPRO object);
 

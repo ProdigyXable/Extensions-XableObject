@@ -58,3 +58,8 @@ bool Extension::PrimeTest(int number)
 		
 	return !detected;
 }
+
+bool Extension::BadAngleInput()
+{
+	return true;
+}

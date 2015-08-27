@@ -49,7 +49,7 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
 	LinkCondition(3, BadObject);
 	LinkCondition(4, BadObjectTest);
 	LinkCondition(5, PrimeTest);
-
+	LinkCondition(6, BadAngleInput);
     /*
         This is where you'd do anything you'd do in CreateRunObject in the original SDK
 

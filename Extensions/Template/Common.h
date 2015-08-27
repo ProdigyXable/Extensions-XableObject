@@ -13,10 +13,11 @@
 #define StoredObject Extension::HandlerObject
 #define MATH_PI 3.14159265358979323846
 #define MMFusionAngle_Shift 180 // In MMFusion, angles start at right and goes counter-clockwise. The sin function goes clockwise. This shift corrects this.
+#define FusionAngleMultiplier 1.4013e-45 // Not used in solution because of differences between MMF2 & Clickteam Fusion
 
 // Shortcut to create the immediate condition 
 #define InvalidObject 3
-#define FusionAngleMultiplier 1.4013e-45
+#define InvalidAngle  6
 
 struct EDITDATA
 {
